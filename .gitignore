@@ -1,0 +1,26 @@
+# Virtual environments
+ML/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Data
+data/
+datasets/
+
+# Env files
+.env
+
+# ML model files
+*.pkl
+*.h5
+*.pt
