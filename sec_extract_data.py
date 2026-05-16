@@ -17,12 +17,13 @@ headers = {
 }
 
 # ─────────────────────────────────────────────
-# XBRL CONCEPT MAPPINGS
+# XBRL CONCEPT (Extensible Business Reporting Language) MAPPINGS. Before XBRL, we had to manually get the figures to compare companies. But with XBRL, 
+# companies tag every single number that they report with a standardized label. THese numbers are made machine readable and hence XBRL is used to standardize the financial data.
 # Different companies use different tag names
 # for the same financial figure. We try each
 # one in order and use the first one that works.
 # ─────────────────────────────────────────────
-
+#The following is a list of XBRL concepts and their possible tag names and have been mapped to a common name.This is done because companies use different XRBL labels to represent the same financial figures.
 concepts = {
     'revenue': [
         "Revenues",
@@ -87,7 +88,7 @@ def fetch_company_facts(cik):
     url = f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json'
 
     try:
-        r = requests.get(url, headers=headers, timeout=20)
+        r = requests.get(url, headers=headers, timeout=20) #Timeout is 20 because these data can be of several MB and might crash for large requests and shorter timeframes
         r.raise_for_status()
         return r.json()
     except requests.exceptions.RequestException as e:
@@ -112,10 +113,10 @@ def extract_concept_value(facts, concept_name, year):
     We filter for annual (FY) 10-K values ending in the target year.
     """
 
-    us_gaap = facts.get('facts', {}).get('us-gaap', {})
+    us_gaap = facts.get('facts', {}).get('us-gaap', {}) # The XBRL JSON is nested. we are fetching the us-gaap section. If any key is missing, we default to an empty dict.
 
-    for tag in concepts[concept_name]:
-        concept_data = us_gaap.get(tag)
+    for tag in concepts[concept_name]: # Try each possible tag for the concept. It is going to use the values for the various possible tags.
+        concept_data = us_gaap.get(tag) # We use get instead of us_gaap[tag] to avoid KeyError if the key is missing. If a key is missing, we get None.
         if not concept_data:
             continue
 
@@ -130,6 +131,8 @@ def extract_concept_value(facts, concept_name, year):
             and entry.get('end', '').startswith(year)
         ]
 
+        # There are times when there are multiple values for the same concept in the same year.
+        # We want the most recent one, so we sort by the 'filed' date in descending order and get the most recent value.
         if annual_values:
             annual_values.sort(key=lambda x: x.get('filed', ''), reverse=True)
             return annual_values[0]['val']

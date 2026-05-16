@@ -36,7 +36,49 @@ companies = {
     # 'Shell': {'ticker': 'SHEL', 'sector': 'Energy'},
     'General Motors': {'ticker': 'GM', 'sector': 'Automotive'},
     'AT&T': {'ticker': 'T', 'sector': 'Communication Services'},
-    'Verizon': {'ticker': 'VZ', 'sector': 'Communication Services'}
+    'Verizon': {'ticker': 'VZ', 'sector': 'Communication Services'},
+    # Technology
+"Intel":        {"ticker": "INTC", "sector": "Technology"},
+"Cisco":        {"ticker": "CSCO", "sector": "Technology"},
+"Salesforce":   {"ticker": "CRM",  "sector": "Technology"},
+"Oracle":       {"ticker": "ORCL", "sector": "Technology"},
+
+# Healthcare
+"Merck":        {"ticker": "MRK",  "sector": "Healthcare"},
+"Abbott":       {"ticker": "ABT",  "sector": "Healthcare"},
+"UnitedHealth": {"ticker": "UNH",  "sector": "Healthcare"},
+"Medtronic":    {"ticker": "MDT",  "sector": "Healthcare"},
+
+# Financial Services
+"Morgan Stanley":  {"ticker": "MS",  "sector": "Financial Services"},
+"Wells Fargo":     {"ticker": "WFC", "sector": "Financial Services"},
+"BlackRock":       {"ticker": "BLK", "sector": "Financial Services"},
+
+# Consumer
+"Costco":     {"ticker": "COST", "sector": "Consumer Discretionary"},
+"Nike":       {"ticker": "NKE",  "sector": "Consumer Discretionary"},
+"McDonald's": {"ticker": "MCD",  "sector": "Consumer Discretionary"},
+"Coca-Cola":  {"ticker": "KO",   "sector": "Consumer Staples"},
+"PepsiCo":    {"ticker": "PEP",  "sector": "Consumer Staples"},
+
+# Energy
+"ConocoPhillips": {"ticker": "COP", "sector": "Energy"},
+
+# Industrials — new sector
+"Boeing":           {"ticker": "BA",  "sector": "Industrials"},
+"Caterpillar":      {"ticker": "CAT", "sector": "Industrials"},
+"Honeywell":        {"ticker": "HON", "sector": "Industrials"},
+"3M":               {"ticker": "MMM", "sector": "Industrials"},
+"General Electric": {"ticker": "GE",  "sector": "Industrials"},
+
+# Real Estate — new sector
+"American Tower": {"ticker": "AMT", "sector": "Real Estate"},
+"Prologis":       {"ticker": "PLD", "sector": "Real Estate"},
+
+# Semiconductors
+"TSMC":    {"ticker": "TSM",  "sector": "Technology"},
+"Broadcom":{"ticker": "AVGO", "sector": "Technology"},
+"Qualcomm":{"ticker": "QCOM", "sector": "Technology"}
 }
 
 years = ['2020', '2021', '2022', '2023']
